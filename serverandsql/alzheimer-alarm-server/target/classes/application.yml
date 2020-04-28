@@ -1,0 +1,24 @@
+server:
+  port: 13522
+# 数据源
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: ysx105702
+    url: jdbc:mysql://localhost:3306/alarmclock?characterEncoding=utf8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+# mybaits-plus配置
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  global-config:
+    banner: false
+#    db-config:
+#      field-strategy: 1
+#      table-underline: true
+#      logic-delete-value: 1
+#      logic-not-delete-value: 0
+#      id-type: assign_uuid
+  configuration:
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.bysj.alzheimer.entity

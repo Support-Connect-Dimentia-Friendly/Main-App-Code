@@ -54,7 +54,7 @@ public class Weather_Home extends AppCompatActivity {
     Weather_adapter weather_adapter = null;
 
 
-    //Send message to UI thread
+    //发送消息到UI线程
     private Handler myHandler = new Handler()
     {
 
@@ -110,7 +110,7 @@ public class Weather_Home extends AppCompatActivity {
 
         }
     }
-    //Match the corresponding weather icon by weather status
+    //通过天气状态去匹配对应的天气图标
     private void weaIcon(Weather_Info wea_info){
 
         if("大雨".equals(wea_info.getWea_state())){
@@ -136,7 +136,7 @@ public class Weather_Home extends AppCompatActivity {
         }
 
     }
-    //Get JSON data through weather request of thread
+    //通过线程对天气请求得到json数据
     private void getWeatherDatafromNet(String cityName)
     {
         final String address = "http://v.juhe.cn/weather/index?format=2&cityname="+cityName+"&key=我这个是聚合API的接口，你可以自己申请一个，我的就不拿出来的，略略略";
@@ -178,7 +178,7 @@ public class Weather_Home extends AppCompatActivity {
             }
         }).start();
     }
-    //Parse JSON data and save it to weather_info
+    //对json数据进行解析，保存到Weather_info
     private Weather_Info ParseJson(String json){
         try {
             wea_info = new Weather_Info();

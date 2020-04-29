@@ -58,7 +58,7 @@ public class EventActivity extends AppCompatActivity {
     }
     @OnClick(R.id.icon_fanhui)
     public void icon_fanhui(View view){
-        Intent intent = new Intent(this,TypeActivity.class);
+        Intent intent = new Intent(this,Note_Home.class);
         startActivity(intent);
     }
 }

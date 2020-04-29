@@ -64,7 +64,7 @@ public class Note_Adapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         convertView = LayoutInflater.from(mcontext).inflate(R.layout.list_item,parent,false);
-        Log.d("This is Note_adapter",String.valueOf(list.size()));
+        Log.d("这里是Note_adapter",String.valueOf(list.size()));
 
         CardView cardView = (CardView) convertView.findViewById(R.id.card);
         ImageView naozhong_icon = (ImageView) convertView.findViewById(R.id.naozhong_icon);
@@ -97,17 +97,20 @@ public class Note_Adapter extends BaseAdapter {
             cardView.setBackgroundResource(R.drawable.card_radius_luse);
         }
 
-        if(list.get(position).getTime().isEmpty()){
+        if(list.get(position).getTime()!=null && list.get(position).getTime().isEmpty()){
             naozhong_icon.setVisibility(View.GONE);
         }
         else {
             naozhong_icon.setVisibility(View.VISIBLE);
         }
 
-        Log.d("Color",String.valueOf(list.get(position).getColorkey()));
+        Log.d("颜色",String.valueOf(list.get(position).getColorkey()));
 
         content.setText(list.get(position).getDescription().toString());
-        time.setText(list.get(position).getTime().toString());
+        if(list.get(position).getTime()!=null){
+            time.setText(list.get(position).getTime().toString());
+        }
+
         eventType.setText(list.get(position).getEventname().toString());
         return convertView;
     }

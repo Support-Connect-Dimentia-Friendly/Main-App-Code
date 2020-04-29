@@ -62,10 +62,10 @@ public class Note_Edit extends AppCompatActivity implements DatePickerDialog.OnD
     int color_key;
     String alarm_date = "";
     int id = 0;
-    //Flag to determine whether to re edit or re edit
+    // Flag to determine whether to re edit or re edit
     int flg = 0;
 
-    //Timing variable
+    // Timing variable
     int alarm_hour;
     int alarm_minute;
     int alarm_year;
@@ -82,19 +82,19 @@ public class Note_Edit extends AppCompatActivity implements DatePickerDialog.OnD
         ButterKnife.bind(this);
         eventname = getIntent().getStringExtra("eventname");
         typename = getIntent().getStringExtra("typename");
-        //A memo record object passed from the main interface
+        // A memo record object passed from the main interface
         Note_Info note_info = (Note_Info)getIntent().getSerializableExtra("note_table_data");
         if(!(note_info == null)){
             revise_content(note_info);
             flg = 1;
         }
 
-        //Color selection of editing interface
+        //编辑界面的颜色选定
         color_selection();
 
 
     }
-    //Call this method when modifying a note
+    //修改备忘时，调用此方法
     private void revise_content( Note_Info note_info){
         Log.d("序列化对象",note_info.getContent().toString());
         Log.d("序列化对象",String.valueOf(note_info.getColor_key()));
@@ -109,7 +109,7 @@ public class Note_Edit extends AppCompatActivity implements DatePickerDialog.OnD
         beijing_shezhi(color_key);
 
     }
-    //Background selection
+    //设置背景
     void beijing_shezhi(int color_key){
         switch (color_key){
             case 0:
@@ -153,14 +153,14 @@ public class Note_Edit extends AppCompatActivity implements DatePickerDialog.OnD
     }
 
 
-    // Return icon, save automatically after returning ？
+    //返回图标，返回后是否自动保存？
     @OnClick(R.id.icon_fanhui)
     public void icon_fanhui(View view){
         finish();
 
     }
 
-    // Click the icon for timing operation
+    //点击图标，进行定时操作
     @OnClick(R.id.naozhong_icon)
     public void naozhong_icon(View view){
         Calendar c = Calendar.getInstance();
@@ -183,7 +183,7 @@ public class Note_Edit extends AppCompatActivity implements DatePickerDialog.OnD
         alarm_year=c.get(Calendar.YEAR);
         alarm_month=c.get(Calendar.MONTH)+1;
         alarm_day=c.get(Calendar.DAY_OF_MONTH);
-        Log.d("Month",String.valueOf(alarm_month));
+        Log.d("月份",String.valueOf(alarm_month));
         new TimePickerDialog(this,this,alarm_hour,alarm_minute,true).show();
         new DatePickerDialog(this,this,alarm_year,alarm_month-1,alarm_day).show();
 
@@ -192,7 +192,7 @@ public class Note_Edit extends AppCompatActivity implements DatePickerDialog.OnD
 
     }
 
-    // Handler running in the main thread: use looper in Android's default UI thread
+    //运行在主线程的Handler：使用Android默认的UI线程中的Looper
     public Handler handlerUI = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -201,7 +201,7 @@ public class Note_Edit extends AppCompatActivity implements DatePickerDialog.OnD
                 case 1:
                     String strData = (String) msg.obj;
                     id = Integer.parseInt(strData);
-                    //Setup reminder
+                    //进行闹钟的设置
                     setAlarm();
                     Intent intent = new Intent(mcontext,Note_Home.class);
                     startActivity(intent);
@@ -214,21 +214,25 @@ public class Note_Edit extends AppCompatActivity implements DatePickerDialog.OnD
         }
     };
 
-    //Save click event
+    //保存点击事件
     @OnClick(R.id.fab)
     public void fab(View view){
-
+            if(alarm_date.equals("")){
+                Toast.makeText(this,"please choose alarm",Toast.LENGTH_LONG).show();
+                return;
+            }
             final String content = edit_content.getText().toString();
             new Thread(new Runnable() {
                 @Override
                 public void run() {
                     try {
-                        // Post request database save
-                        OkHttpClient client = new OkHttpClient();// Create the okhttpclient object.
-                        FormBody.Builder formBody = new FormBody.Builder();// Create form request body
-                        formBody.add("description",content);// Pass key value pair parameter
-                        formBody.add("time",alarm_date);// Pass key value pair parameter
-                        formBody.add("colorkey", String.valueOf(color_key));// Pass key value pair parameter
+
+                        //进行post请求数据库保存
+                        OkHttpClient client = new OkHttpClient();//创建OkHttpClient对象。
+                        FormBody.Builder formBody = new FormBody.Builder();//创建表单请求体
+                        formBody.add("description",content);//传递键值对参数
+                        formBody.add("time",alarm_date);//传递键值对参数
+                        formBody.add("colorkey", String.valueOf(color_key));//传递键值对参数
                         if(eventname!=null){
                             formBody.add("eventname",eventname);
                         }
@@ -239,11 +243,11 @@ public class Note_Edit extends AppCompatActivity implements DatePickerDialog.OnD
                             formBody.add("id", String.valueOf(id));
                         }
 
-                        Request request = new Request.Builder()//Create Request object
-                                .url("http://10.0.2.2:13522/alzheimer/user-event")
-                                .post(formBody.build())// Delivery request body
+                        Request request = new Request.Builder()//创建Request 对象。
+                                .url("http://39.107.109.210:13522/alzheimer/user-event")
+                                .post(formBody.build())//传递请求体
                                 .build();
-                        Response response = client.newCall(request).execute();//The use of callback method is the same as that of get asynchronous request
+                        Response response = client.newCall(request).execute();//回调方法的使用与get异步请求相同，此时略。
                         if (response.isSuccessful()) {
                             Message message = Message.obtain();
                             message.what = 1;
@@ -267,7 +271,7 @@ public class Note_Edit extends AppCompatActivity implements DatePickerDialog.OnD
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             try {
                 Date time = simpleDateFormat.parse(alarm_date);
-                // Take the alarm_date data from the database for timing operation
+                //从数据库中拿到alarm_date数据进行定时操作
                 Intent intent = new Intent(mcontext, BroadcastAlarm.class);
                 intent.putExtra("alarmId",id);
                 PendingIntent sender = PendingIntent.getBroadcast(mcontext,id, intent, 0);
@@ -288,7 +292,7 @@ public class Note_Edit extends AppCompatActivity implements DatePickerDialog.OnD
         }
     }
 
-    // Color selection of editing interface
+    //编辑界面的颜色选定
     private void color_selection(){
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override

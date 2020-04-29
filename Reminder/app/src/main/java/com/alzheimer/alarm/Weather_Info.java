@@ -1,7 +1,7 @@
 package com.alzheimer.alarm;
 
 /**
- * Created by Yao on 2020/4/25.
+ * Created by zhu on 2018/8/18.
  */
 
 public class Weather_Info {

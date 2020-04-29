@@ -33,7 +33,7 @@ public class BroadcastAlarm extends BroadcastReceiver{
     @Override
     public void onReceive(Context context, Intent intent) {
         //showMemo(context);
-        Log.d("闹钟响了","响了");
+        Log.d("Alarm rings","rings");
         alarmId=intent.getIntExtra("alarmId",0);
         showNotice(context);
     }

@@ -53,7 +53,7 @@ public class Note_Taskdetail extends AppCompatActivity {
 
     }
 
-    // Handler running in the main thread: use looper in Android's default UI thread
+    //运行在主线程的Handler：使用Android默认的UI线程中的Looper
     public Handler handlerUI = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -66,7 +66,7 @@ public class Note_Taskdetail extends AppCompatActivity {
                     edit_time.setText(note_table.getTime());
                     setDraw(note_table.getEventname());
                     setColor();
-                    // Play alarm
+                    //播放闹钟铃声
                     Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
                     Ringtone mRingTone = RingtoneManager.getRingtone(Note_Taskdetail.this, notification);
                     if (mRingTone != null && !mRingTone.isPlaying()) {
@@ -147,7 +147,7 @@ public class Note_Taskdetail extends AppCompatActivity {
                 try {
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.0.2.2:13522/alzheimer/user-event/"+id)//请求接口。如果需要传参拼接到接口后面。
+                            .url("http://39.107.109.210:13522/alzheimer/user-event/"+id)//请求接口。如果需要传参拼接到接口后面。
                             .build();//创建Request 对象
                     Response response = client.newCall(request).execute();//得到Response 对象
                     if (response.isSuccessful()) {

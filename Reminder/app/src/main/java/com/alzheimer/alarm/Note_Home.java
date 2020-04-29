@@ -54,10 +54,10 @@ public class Note_Home extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mcontext = this;
         ButterKnife.bind(this);
-        listview_click();  //listviewClick event
-        listview_longPress(); //listview Long press event
+        listview_click();  //listview点击事件
+        listview_longPress(); //listview长按事件
     }
-    //Add a new note
+    //添加新备忘
     @OnClick(R.id.fab)
     public void fab(View view){
 //        Intent intent = new Intent(mcontext,Note_Edit.class);
@@ -65,7 +65,7 @@ public class Note_Home extends AppCompatActivity {
         Intent intent = new Intent(mcontext,TypeActivity.class);
         startActivity(intent);
     }
-    //Weather
+    //天气
     @OnClick(R.id.icon)
     public void icon(View view){
         Intent intent = new Intent(mcontext,MapsActivity.class);
@@ -81,7 +81,7 @@ public class Note_Home extends AppCompatActivity {
     }
 
 
-    //Handler running in the main thread: use looper in Android's default UI thread
+    //运行在主线程的Handler：使用Android默认的UI线程中的Looper
     public Handler handlerUI = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -90,13 +90,13 @@ public class Note_Home extends AppCompatActivity {
                 case 1:
                     String strData = (String) msg.obj;
                     list = JSONObject.parseArray(strData,Note_table.class);
-                    Log.d("This is ONSTART",String.valueOf(list.size()));
+                    Log.d("这里是ONSTART",String.valueOf(list.size()));
                     note_adapter = new Note_Adapter(mcontext,(ArrayList<Note_table>)list);
                     listView.setAdapter(note_adapter);
                     break;
                 case 2:
                     Data_loading();
-                    Toast.makeText(mcontext,"Delete successful～",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mcontext,"删除成功～",Toast.LENGTH_SHORT).show();
                     break;
                 default:
                     break;
@@ -104,7 +104,7 @@ public class Note_Home extends AppCompatActivity {
         }
     };
 
-    //Load data from database
+    //从数据库中加载数据
     private void Data_loading(){
 //        list = DataSupport.findAll(Note_table.class);
         new Thread(new Runnable() {
@@ -113,9 +113,9 @@ public class Note_Home extends AppCompatActivity {
                 try {
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.0.2.2:13522/alzheimer/user-event")//Request interface. If you need to splice parameters to the back of the interface.
-                            .build();//Create request object
-                    Response response = client.newCall(request).execute();//Get Response object
+                            .url("http://39.107.109.210:13522/alzheimer/user-event")//请求接口。如果需要传参拼接到接口后面。
+                            .build();//创建Request 对象
+                    Response response = client.newCall(request).execute();//得到Response 对象
                     if (response.isSuccessful()) {
                         Message message = Message.obtain();
                         message.what = 1;
@@ -130,20 +130,20 @@ public class Note_Home extends AppCompatActivity {
         }).start();
     }
 
-    //Load data from database
+    //从数据库中加载数据
     private void delete(final String deleteId){
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    //Post request database save
-                    OkHttpClient client = new OkHttpClient();//Create the okhttpclient object.
-                    FormBody.Builder formBody = new FormBody.Builder();//Create form request body
-                    Request request = new Request.Builder()//Create Request object.
-                            .url("http://10.0.2.2:13522/alzheimer/user-event/"+deleteId)
-                            .post(formBody.build())//Delivery request body
+                    //进行post请求数据库保存
+                    OkHttpClient client = new OkHttpClient();//创建OkHttpClient对象。
+                    FormBody.Builder formBody = new FormBody.Builder();//创建表单请求体
+                    Request request = new Request.Builder()//创建Request 对象。
+                            .url("http://39.107.109.210:13522/alzheimer/user-event/"+deleteId)
+                            .post(formBody.build())//传递请求体
                             .build();
-                    Response response = client.newCall(request).execute();//The use of callback method is the same as that of get asynchronous request, omitted at this time.
+                    Response response = client.newCall(request).execute();//回调方法的使用与get异步请求相同，此时略。
                     if (response.isSuccessful()) {
                         Message message = Message.obtain();
                         message.what = 2;
@@ -158,7 +158,7 @@ public class Note_Home extends AppCompatActivity {
         }).start();
     }
 
-    //listview click event
+    //listview点击事件
     private void listview_click(){
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -181,7 +181,7 @@ public class Note_Home extends AppCompatActivity {
     }
 
 
-    //listview Long press event
+    //listview长按事件
     private void listview_longPress(){
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -190,12 +190,12 @@ public class Note_Home extends AppCompatActivity {
                 AlertDialog.Builder builder  = new AlertDialog.Builder(mcontext);
 
                 alert = builder.setIcon(R.drawable.jinggao)
-                        .setTitle("System prompt：")
-                        .setMessage("Do you want to delete this note？")
-                        .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                        .setTitle("tips：")
+                        .setMessage("Delete this？")
+                        .setNegativeButton("no", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(mcontext,"cancel delete～",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(mcontext,"cancel～",Toast.LENGTH_SHORT).show();
                             }
 
                         })
@@ -226,6 +226,6 @@ public class Note_Home extends AppCompatActivity {
 
         AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
         am.cancel(sender);
-        Log.d("cancel reminder","Cancel cancel");
+        Log.d("cancel alarm","cancel cancel");
     }
 }

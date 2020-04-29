@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="8dp"
-                android:text="备忘详情"
+                android:text="Alarm"
                 android:textColor="@color/white"
                 android:textSize="30dp" />
         </RelativeLayout>
@@ -40,7 +40,6 @@
         android:layout_marginTop="10dp">
         <ImageView
             android:id="@+id/gp"
-            android:background="@drawable/gp"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
         <LinearLayout

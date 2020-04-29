@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="6dp"
-                android:text="note_edit"
+                android:text="Description"
                 android:textColor="@color/white"
                 android:textSize="30dp" />
 
@@ -57,7 +57,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="8dp"
                 android:gravity="left|top"
-                android:text=""
+                android:text="type your description"
                 android:textColor="@color/white" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton

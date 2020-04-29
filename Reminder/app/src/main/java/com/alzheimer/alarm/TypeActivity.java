@@ -26,10 +26,11 @@ public class TypeActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    // Return to icon click event
+    //返回图标点击事件
     @OnClick(R.id.icon_fanhui)
     public void icon_fanhui(View v) {
-        finish();
+        Intent intent = new Intent(this,Note_Home.class);
+        startActivity(intent);
     }
 
 

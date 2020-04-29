@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
- * Created by Yao on 2020/4/25.
+ * Created by zhu on 2018/8/19.
  */
 
 public class SharedHelper {
@@ -15,7 +15,7 @@ public class SharedHelper {
         this.mcontext = mcontext;
     }
 
-    // Store the searched City to SharedPreferences
+    //将搜索的城市存入SharedPreferences
     public void save(String city){
 
         SharedPreferences sp = mcontext.getSharedPreferences("city",Context.MODE_PRIVATE);
@@ -27,7 +27,7 @@ public class SharedHelper {
     public String read(){
         String city;
         SharedPreferences sp = mcontext.getSharedPreferences("city",Context.MODE_PRIVATE);
-        city = sp.getString("local","Melbourne");
+        city = sp.getString("local","合肥");
         return city;
     }
 

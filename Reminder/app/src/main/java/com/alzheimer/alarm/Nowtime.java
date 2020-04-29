@@ -4,12 +4,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by Yao on 2020/4/25.
+ * Created by zhu on 2018/8/18.
  */
 
 public class Nowtime {
     public static String Now() {
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//Format date
-        return (df.format(new Date()));// new Date()To get the current system time
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        return (df.format(new Date()));// new Date()为获取当前系统时间
     }
 }

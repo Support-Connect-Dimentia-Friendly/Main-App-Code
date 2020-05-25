@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TypeActivity"
+    android:background="#FFF"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="1">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="46dp">
+            <ImageView
+                android:id="@+id/icon_fanhui"
+                android:layout_width="30dp"
+                android:layout_height="34dp"
+                android:layout_marginTop="9dp"
+                android:src="@drawable/fanhui" />
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:text="Explore VIC"
+                android:textColor="@color/black"
+                android:textSize="30dp" />
+            <ImageView
+                android:id="@+id/home"
+                android:layout_width="30dp"
+                android:layout_height="34dp"
+                android:layout_marginTop="9dp"
+                android:src="@drawable/home"
+                android:layout_marginLeft="350dp"/>
+        </RelativeLayout>
+    </LinearLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:src="@drawable/myvic"
+        android:layout_weight="6"
+        android:scaleType="fitXY"
+        android:padding="10dp">
+
+    </ImageView>
+    <ListView
+        android:id="@+id/vicList"
+        android:divider="@null"
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:layout_weight="10">
+
+    </ListView>
+</LinearLayout>

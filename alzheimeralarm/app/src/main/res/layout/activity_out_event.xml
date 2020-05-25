@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:scrollbars="vertical"
+    android:fadingEdge="vertical"
+    android:background="#FFDCE8">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFDCE8"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <ImageView
+                    android:id="@+id/icon_fanhui"
+                    android:layout_width="30dp"
+                    android:layout_height="34dp"
+                    android:layout_marginTop="9dp"
+                    android:src="@drawable/fanhui" />
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:text="ALZSupport"
+                    android:textColor="@color/black"
+                    android:textSize="30dp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <TextView
+                android:text="Select Activity"
+                android:textSize="40dp"
+                android:textColor="#DD3497"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:orientation="horizontal"
+            android:id="@+id/gpline"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true">
+                <TextView
+                    android:id="@+id/gp_name"
+                    android:text="GP Appointment"
+                    android:textSize="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="30dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <ImageView
+                    android:id="@+id/gp"
+                    android:background="@drawable/gp"
+                    android:layout_width="100dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="260dp"/>
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:orientation="horizontal"
+            android:id="@+id/dentistline"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true">
+                <TextView
+                    android:id="@+id/dentist_name"
+                    android:text="Dentist \nAppointment"
+                    android:textSize="30dp"
+                    android:ellipsize="none"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="30dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <ImageView
+                    android:id="@+id/dentist"
+                    android:background="@drawable/dentist"
+                    android:layout_width="100dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="260dp" />
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:orientation="horizontal"
+            android:id="@+id/parkline"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true">
+                <TextView
+                    android:id="@+id/park_name"
+                    android:text="Going To The Park"
+                    android:textSize="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="30dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <ImageView
+                    android:id="@+id/park"
+                    android:background="@drawable/park"
+                    android:layout_width="100dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="260dp"/>
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:orientation="horizontal"
+            android:id="@+id/friendline"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true">
+                <TextView
+                    android:id="@+id/friend_name"
+                    android:textSize="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="30dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Visiting Friends"
+                    />
+                <ImageView
+                    android:id="@+id/friend"
+                    android:background="@drawable/friend"
+                    android:layout_width="100dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="260dp"  />
+
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:orientation="horizontal"
+            android:id="@+id/dogline"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true">
+                <TextView
+                    android:id="@+id/dog_name"
+                    android:textSize="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="30dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Walking A Dog"
+                    />
+                <ImageView
+                    android:id="@+id/dog"
+                    android:background="@drawable/dog"
+                    android:layout_width="100dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="260dp" />
+
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:orientation="horizontal"
+            android:id="@+id/dinnerline"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true">
+                <TextView
+                    android:id="@+id/dinner_name"
+
+                    android:text="Going Out \nFor Dinner"
+                    android:textSize="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="30dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <ImageView
+                    android:id="@+id/dinner"
+                    android:background="@drawable/dinner"
+                    android:layout_width="100dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="260dp"/>
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:orientation="horizontal"
+            android:id="@+id/cookingline"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true">
+                <TextView
+                    android:id="@+id/cooking_name"
+
+                    android:text="Participate In \nCommunity \nCooking Competition"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="30dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <ImageView
+                    android:id="@+id/cooking"
+                    android:background="@drawable/cooking"
+                    android:layout_width="100dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="260dp"/>
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
